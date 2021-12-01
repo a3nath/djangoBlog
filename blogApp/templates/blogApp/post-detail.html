@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+
+Post Title
+
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'blogApp/post-detail.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+<section class='summary'>
+    <h2>{{post.title}}</h2>
+    <article>
+        <img>
+        <address>{{post.author}}</address>
+        <div>{{post.date}}</div>
+    </article>
+
+</section>
+<main>
+    {{post.content}}    
+</main>
+
+{% endblock %}

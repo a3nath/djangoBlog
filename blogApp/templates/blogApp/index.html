@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 
@@ -6,6 +7,34 @@ My blog
 
 {% endblock %}
 
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static 'blogApp/posts.css' %}"/>
+    <link rel="stylesheet" href="{% static 'blogApp/index.css' %}"/>
+
+{% endblock %}
+
 {% block content %}
-<h1> Welcome</h1>
+
+<section class='welcome'>
+    <header> 
+        <img src='' alt=''>
+        <h2>Welcome</h2>
+        <p>Hi, There. I'm Amar. Naam tu suna hi hoga</p>
+    </header>
+</section>
+<section class='latest-posts'>
+    <h2>Current thoughts</h2>
+    <ul>
+        {% for post in posts %}
+            {% include "blogApp/includes/post.html" %}
+        {% endfor %}
+    </ul>
+</section>
+<section class='about'>
+    <h2>You know me!?</h2>
+    <p></p>
+
+</section>
+
 {% endblock %}

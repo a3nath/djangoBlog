@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+
+All Posts
+
+{% endblock %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="{% static 'blogApp/posts.css' %}"/>
+
+{% endblock %}
+
+{% block content %}
+
+    <section class='posts'>
+        <h2>
+            All Posts
+        </h2>
+        <ul>
+            {% for post in posts %}
+                {% include 'blogApp/includes/post.html' %}
+            {% endfor %}
+        </ul>
+    </section>
+
+{% endblock %}
