@@ -15,10 +15,18 @@ Post Title
 
 <section class='summary'>
     <h2>{{post.title}}</h2>
+    <div class='tag'>
+        {%for tag in post_tags%}
+            <span>
+                {{ tag.caption}}
+            </span>
+        {% endfor %}
+    </div>
     <article>
         <img>
         <address>{{post.author}}</address>
         <div>{{post.date}}</div>
+       
     </article>
 
 </section>
