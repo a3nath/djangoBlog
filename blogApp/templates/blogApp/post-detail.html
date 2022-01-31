@@ -27,10 +27,22 @@ Post Title
         <address>{{post.author}}</address>
         <div>{{post.date}}</div>
     </article>
+   
 
 </section>
 <main> 
     {{ post.excerpt }}
+    <div class='comment-form'>
+        <form action="" method="post">
+            {% csrf_token %}
+            <ul>
+                {{comment_form.as_ul}}
+            </ul>
+            <button>Submit</button>
+    
+        </form>
+    </div>
+ 
 </main>
 
 {% endblock %}

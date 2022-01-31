@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from datetime import date
-from .models import Post, Author, Tag
+from .models import Post, Author, Tag, Comment
+from .forms import CommentForm
 from django.views.generic import ListView, DetailView
 
 
@@ -24,13 +25,17 @@ class AllPostView(ListView):
 #detail view
 
 class PostDetalView(DetailView):
+
+    #if get request display form
+    #if post request new view
     template_name = 'blogApp/post-detail.html'
     model = Post
-    context_object_name = 'post'      
+    context_object_name = 'post'   
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['post_tags'] = self.object.tag.all()
+        context['comment_form'] = CommentForm()
         return context
     
 
