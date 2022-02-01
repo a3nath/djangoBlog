@@ -25,7 +25,7 @@ class Post(models.Model):
     date = models.DateField(auto_now=True)
     slug =  models.SlugField(unique=True)
     content = models.TextField(max_length=500, blank=True)
-    author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, related_name='author')
     tag = models.ManyToManyField(Tag)
 
     
@@ -38,7 +38,7 @@ class Comment(models.Model):
     user_name = models.CharField(max_length=100, blank=True)
     user_email = models.EmailField(max_length=100, blank=True)
     date = models.DateField(auto_now=True)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, related_name="comments")
 
 
     def __str__(self):

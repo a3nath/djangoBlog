@@ -31,9 +31,18 @@ Post Title
 
 </section>
 <main> 
-    {{ post.excerpt }}
+    <ul>
+        {% for comment in comments %}
+            <li>
+                <h2>{{ comment.subTitle }}</h2>
+                <p>{{comment.text}}</p>
+            </li>
+            
+        {% endfor %}
+
+    </ul>
     <div class='comment-form'>
-        <form action="" method="post">
+        <form action="{% url 'post-detail-page' post.slug %}" method="post">
             {% csrf_token %}
             <ul>
                 {{comment_form.as_ul}}
